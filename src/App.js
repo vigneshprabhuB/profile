@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import { Component } from 'react';
+import Projects from './components/Projects'
+import PROJECTS from './data/projects';
+import SocilaProfiles from './components/SocialProfiles';
+import Profile from './components/Profile';
+import './index.css';
+import SOCIAL from './data/social';
+import { PROFILE } from './data/profile';
+import Jokes from "./components/Jokes"
+import { HEADER } from "./components/Header";
+import {  Route, Router, Switch } from "react-router-dom";
+import { createBrowserHistory } from "history";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+
+
+    render() {
+        return (
+            <div className="container">
+                
+                <Router  history={createBrowserHistory()}>
+                <HEADER></HEADER>
+                    <Switch>
+                    <Route exact path="/">
+                        <Profile data={PROFILE} />
+                        <Projects projects={PROJECTS} />
+                        <SocilaProfiles profiles={SOCIAL} />
+                    </Route>
+                    <Route path="/jokes">
+                        <Jokes></Jokes>
+                    </Route>
+                    </Switch>
+                </Router>
+            </div>
+        )
+    }
+
+
 }
 
-export default App;
+export default App; 
