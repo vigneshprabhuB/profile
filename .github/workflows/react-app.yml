@@ -26,8 +26,7 @@ jobs:
       - name: Install postcss
         run: npm install postcss-safe-parser@latest
 
-      - name: Build the React app
-        run: npm run build
+
 
       - name: Start the app (for development/testing only)
         run: npm start &
